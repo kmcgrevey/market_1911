@@ -27,4 +27,18 @@ class Market
     items = items.flatten.uniq
     items.sort_by { |item| item[0] }
   end
+
+  def total_inventory
+    total_inv = []
+    # use vendor.check_stock(??) ???
+    @vendors.each do |vendor|
+      total_inv << vendor.inventory
+    end
+    #
+    # total = {}
+    # total_inv.reduce({}) do |acc, (k,v)|
+    #   require "pry"; binding.pry
+    # end
+    total_inv
+  end
 end

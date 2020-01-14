@@ -69,6 +69,17 @@ class MarketTest < Minitest::Test
 
     assert_equal expected, @market.sorted_item_list
   end
+
+  def test_it_can_generate_market_total_inventory
+    @market.add_vendor(@vendor1)
+    @market.add_vendor(@vendor2)
+    @market.add_vendor(@vendor3)
+    expected = {@item1 => 100,
+                @item2 => 7,
+                @item4 => 50,
+                @item3 => 25}
+    assert_equal expected, @market.total_inventory
+  end
 end
 
 #
