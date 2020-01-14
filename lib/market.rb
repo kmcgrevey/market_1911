@@ -19,4 +19,12 @@ class Market
       vendor.inventory.include?(item) == true
     end
   end
+
+  def sorted_item_list
+    items = @vendors.map do |vendor|
+      vendor.inventory.keys.map { |key| key.name }
+    end
+    items = items.flatten.uniq
+    items.sort_by { |item| item[0] }
+  end
 end
